@@ -282,6 +282,23 @@
         .link:hover { text-decoration:underline; }
         .copy { color:#ffff00; cursor:pointer; }
         .copy:hover { text-decoration:underline; }
+
+        .about-mid {
+            position: relative;
+            white-space: pre;
+        }
+
+    .vibe-hover .vibe-hidden { display: inline; }
+    .vibe-hover .vibe-hint { display: none; }
+
+    @media (min-width: 769px) {
+        .vibe-hover .vibe-hidden { display: none; }
+        .vibe-hover .vibe-hint { display: inline; }
+        .vibe-hover:hover .vibe-hidden { display: inline; }
+        .vibe-hover:hover .vibe-hint { display: none; }
+    }
+
+
     </style>
 </head>
 <body>
@@ -580,7 +597,7 @@ Python 3.13 • aiogram 3.x • SQLAlchemy (async) • Gemini/Groq API • Matpl
 ▸ Работа в команде
 
 <span class="highlight">Extra:</span>
-▸ <span class="accent">Vibe coding</span>                [████████████] 99%`,
+▸ <span class="vibe-hover"><span class="vibe-hint">[hover]</span><span class="vibe-hidden"><span class="accent">Vibe coding</span>                [████████████] 99%</span></span>`,
 
         contacts: mobile ?
 `===============================================
