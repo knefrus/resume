@@ -325,8 +325,76 @@
             { id: 'ai', title: '🤖 AI Рекрутер (Beta)' }
         ];
 
-        const contentData = {
-            about: `╔═══════════════════════════════════════════════════════════╗
+        // Проверка мобильного устройства
+const isMobile = () => window.innerWidth <= 768;
+
+const getContentData = () => {
+    const mobile = isMobile();
+
+    return {
+        about: mobile ?
+`===============================================
+           О СЕБЕ / ABOUT ME
+===============================================
+
+Имя: Никита Кубарев
+Статус: <span class="highlight">Student</span>
+Возраст: 18 лет
+Образование: Бакалавриат, <span class="accent">Искусственный интеллект</span>
+Университет: Центральный университет
+
+<span class="highlight">Описание:</span>
+Студент направления «Искусственный интеллект», ориентирован на 
+практику и прикладные ML-задачи. Интересуют позиции <span class="accent">ML Engineer / 
+Data Analyst / Data Scientist</span>. Работаю с реальными данными, люблю 
+разбираться в задаче. Использую Linux, поддерживаю Open Source 
+культуру.
+
+Коммерческого опыта нет, но есть проектный и исследовательский 
+опыт в рамках учебных курсов, научных студий и соревнований.
+
+<span class="highlight">Проектный опыт:</span>
+<div class="collapsible" onclick="toggleCollapsible(this)">Научная студия (ML / Data Science)</div>
+<div class="collapsible-content">
+Проект по прогнозированию интракраниальной прогрессии у 
+пациентов, проходящих лечение на Гамма-ноже.
+Работа в команде, реальные медицинские данные.
+
+<span class="accent">Использовано:</span>
+– анализ и предобработка данных
+– балансировка классов (SMOTE)
+– ансамбль моделей: CatBoost, LightGBM, XGBoost
+
+<span class="accent">Результат:</span>
+– научный отчёт в формате статьи
+– участие в научном хакатоне (Kaggle-формат)
+</div>
+
+<div class="collapsible" onclick="toggleCollapsible(this)">Pet-проект: Telegram-бот тренировок</div>
+<div class="collapsible-content">
+Telegram-бот — магазин программ тренировок.
+
+<span class="accent">Функционал:</span>
+– калькулятор тренировок
+– сбор и анализ пользовательской статистики
+– ИИ-тренер
+– персонализация тренировочных программ
+</div>
+
+<span class="highlight">Дополнительно:</span>
+Программирую, собираю и летаю на БПЛА. <span class="accent">Двукратный чемпион РФ</span> 
+в соревнованиях «Профессионалы».
+Много лет занимаюсь большим теннисом (13 лет) - дисциплина, 
+работа на результат, умение долго идти к цели.
+
+<span class="highlight">Личные качества:</span>
+– аналитическое мышление
+– быстрая обучаемость (быстро подстроюсь под любую задачу)
+– ответственность
+– умение работать в команде
+– интерес к сложным и нестандартным задачам`
+        :
+`╔═══════════════════════════════════════════════════════════╗
 ║                      О СЕБЕ / ABOUT ME                     ║
 ╚═══════════════════════════════════════════════════════════╝
 
@@ -387,7 +455,57 @@ Telegram-бот — магазин программ тренировок.
 – умение работать в команде
 – интерес к сложным и нестандартным задачам`,
 
-            skills: `╔═══════════════════════════════════════════════════════════╗
+        skills: mobile ?
+`===============================================
+            НАВЫКИ / SKILLS
+===============================================
+
+<span class="highlight">Языки и программирование:</span>
+▸ Python                     [███████░░░░░] 70%
+▸ SQL                        [██████░░░░░░] 65%
+
+<span class="highlight">Data Science / ML:</span>
+▸ NumPy                      [███████░░░░░] 70%
+▸ Pandas                     [███████░░░░░] 70%
+▸ Matplotlib                 [██████░░░░░░] 65%
+▸ Анализ данных (EDA)        [███████░░░░░] 70%
+▸ Машинное обучение (ML)     [██████░░░░░░] 65%
+▸ Ансамбли: <span class="accent">CatBoost, LightGBM, XGBoost</span>
+▸ Работа с несбалансированными данными (SMOTE)
+▸ Статистика                 [██████░░░░░░] 65%
+▸ Теория вероятностей        [██████░░░░░░] 60%
+▸ Тестирование гипотез       [██████░░░░░░] 60%
+
+<span class="highlight">Backend / API:</span>
+▸ <span class="accent">FastAPI</span>
+▸ Асинхронный Python
+▸ REST API
+▸ Внешние API (httpx)
+▸ Middleware
+▸ Фоновые задачи
+▸ Логирование
+
+<span class="highlight">Базы данных и кэширование:</span>
+▸ PostgreSQL
+▸ MongoDB
+▸ Redis (кэширование, TTL)
+
+<span class="highlight">DevOps / Tools:</span>
+▸ Git
+▸ Docker                     [█████░░░░░░░] 50%
+▸ Docker для Python-проектов
+▸ HTTPS / базовые сетевые принципы
+
+<span class="highlight">Инженерное мышление:</span>
+▸ Проектирование пайплайнов данных
+▸ Чтение и разбор чужого кода
+▸ Документирование результатов
+▸ Работа в команде
+
+<span class="highlight">Extra:</span>
+▸ <span class="accent">Vibe coding</span>                [████████████] 99%`
+        :
+`╔═══════════════════════════════════════════════════════════╗
 ║                    НАВЫКИ / SKILLS                         ║
 ╚═══════════════════════════════════════════════════════════╝
 
@@ -436,7 +554,35 @@ Telegram-бот — магазин программ тренировок.
 <span class="highlight">Extra:</span>
 ▸ <span class="accent">Vibe coding</span>                [████████████] 99%`,
 
-            contacts: `╔═══════════════════════════════════════════════════════════╗
+        contacts: mobile ?
+`===============================================
+           КОНТАКТЫ / CONTACTS
+===============================================
+
+📧 Email:
+   nikitos@kapi-bara.ru - личная почта
+   n.kubarev@edu.centraluniversity.ru - учебная почта
+
+🔗 GitHub:
+   https://github.com/knefrus
+
+📱 Telegram:
+   @mrknef
+
+🌐 Личный сайт:
+   https://knefrus.github.io/resume/
+
+📍 Локация:
+   Москва, Россия
+
+═══════════════════════════════════════════════════════════
+
+[!] Связь со мной:
+
+Предпочитаемые способы связи: Email, Telegram
+Время ответа: обычно в течение 24 часов`
+        :
+`╔═══════════════════════════════════════════════════════════╗
 ║                  КОНТАКТЫ / CONTACTS                       ║
 ╚═══════════════════════════════════════════════════════════╝
 
@@ -462,7 +608,9 @@ Telegram-бот — магазин программ тренировок.
 
 Предпочитаемые способы связи: Email, Telegram
 Время ответа: обычно в течение 24 часов`
-        };
+    };
+};
+
 
         function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
@@ -589,39 +737,42 @@ Telegram-бот — магазин программ тренировок.
         }
 
         function showContent(contentId) {
-            terminal.innerHTML = '';
-            
-            if (contentId === 'ai') {
-                showAIChat();
-                return;
-            }
-            
-            addLine('[recruiter@archlinux ~]$ cat ' + contentId + '.txt', 'command');
-            addLine('');
+    terminal.innerHTML = '';
+    
+    if (contentId === 'ai') {
+        showAIChat();
+        return;
+    }
+    
+    addLine('[recruiter@archlinux ~]$ cat ' + contentId + '.txt', 'command');
+    addLine('');
 
-            const content = document.createElement('div');
-            content.className = 'content';
-            content.style.display = 'block';
-            
-            // Для "О себе" и "Навыков" рендерим HTML
-            if (contentId === 'about' || contentId === 'skills') {
-                content.innerHTML = contentData[contentId];
-            } else {
-                content.textContent = contentData[contentId];
-            }
-            
-            terminal.appendChild(content);
+    const content = document.createElement('div');
+    content.className = 'content';
+    content.style.display = 'block';
+    
+    // Получаем данные с учётом размера экрана
+    const data = getContentData();
+    
+    // Для "О себе" и "Навыков" рендерим HTML
+    if (contentId === 'about' || contentId === 'skills') {
+        content.innerHTML = data[contentId];
+    } else {
+        content.textContent = data[contentId];
+    }
+    
+    terminal.appendChild(content);
 
-            addLine('');
-            const backBtn = document.createElement('div');
-            backBtn.className = 'back-btn';
-            backBtn.textContent = '[Нажмите здесь чтобы вернуться в меню]';
-            backBtn.onclick = () => {
-                terminal.innerHTML = '';
-                showMainMenu();
-            };
-            terminal.appendChild(backBtn);
-        }
+    addLine('');
+    const backBtn = document.createElement('div');
+    backBtn.className = 'back-btn';
+    backBtn.textContent = '[Нажмите здесь чтобы вернуться в меню]';
+    backBtn.onclick = () => {
+        terminal.innerHTML = '';
+        showMainMenu();
+    };
+    terminal.appendChild(backBtn);
+}
 
         function toggleCollapsible(element) {
             element.classList.toggle('active');
