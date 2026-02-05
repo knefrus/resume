@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arch Linux Terminal - Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,7 +17,7 @@
         body {
             background: #000;
             color: #0f0;
-            font-family: 'Courier New', monospace;
+            font-family: 'Roboto Mono', 'Courier New', monospace;
             overflow: hidden;
             height: 100vh;
         }
@@ -31,34 +34,40 @@
         @media (max-width: 768px) {
             #terminal {
                 padding: 10px;
-                font-size: 11px;
+                font-size: 10px;
                 line-height: 1.4;
             }
 
             .ascii-art {
-                font-size: 8px !important;
+                font-size: 7px !important;
                 line-height: 1 !important;
             }
 
             .menu-item {
-                font-size: 12px;
+                font-size: 11px;
                 padding: 8px 5px !important;
             }
 
             .header {
-                font-size: 13px !important;
+                font-size: 11px !important;
             }
 
             .content {
-                font-size: 11px;
+                font-size: 10px;
                 overflow-x: auto;
+            }
+            
+            pre {
+                font-size: 9px;
+                overflow-x: auto;
+                white-space: pre;
             }
         }
 
         @media (max-width: 480px) {
             #terminal {
                 padding: 8px;
-                font-size: 10px;
+                font-size: 9px;
             }
 
             .ascii-art {
@@ -66,7 +75,11 @@
             }
 
             .menu-item {
-                font-size: 11px;
+                font-size: 10px;
+            }
+            
+            pre {
+                font-size: 8px;
             }
         }
 
@@ -86,6 +99,7 @@
             color: #0f0;
             margin: 2px 0;
             word-wrap: break-word;
+            overflow-x: auto;
         }
 
         .boot-line.ok {
@@ -155,6 +169,7 @@
             border-left: 2px solid #0f0;
             padding-left: 10px;
             word-wrap: break-word;
+            overflow-x: auto;
         }
 
         .collapsible {
@@ -215,6 +230,7 @@
             color: #00ffff;
             font-weight: bold;
             font-size: 16px;
+            overflow-x: auto;
         }
 
         .back-btn {
@@ -617,7 +633,6 @@ Telegram-бот — магазин программ тренировок.
 
         // ============ AI Рекрутер ============
         
-        // URL твоего Cloudflare Worker (получишь после деплоя)
         const WORKER_URL = 'https://crimson-block-2a4b.mrknefrus.workers.dev/';
         
         
@@ -694,7 +709,6 @@ Telegram-бот — магазин программ тренировок.
             chatContainer.style.marginTop = '10px';
             terminal.appendChild(chatContainer);
 
-            // Промпт для ввода
             const inputLine = document.createElement('div');
             inputLine.className = 'boot-line';
             inputLine.style.marginTop = '10px';
@@ -707,7 +721,7 @@ Telegram-бот — магазин программ тренировок.
                 background: transparent;
                 border: none;
                 color: #ffff00;
-                font-family: 'Courier New', monospace;
+                font-family: 'Roboto Mono', 'Courier New', monospace;
                 font-size: inherit;
                 outline: none;
                 width: 70%;
@@ -718,7 +732,6 @@ Telegram-бот — магазин программ тренировок.
             inputLine.appendChild(input);
             terminal.appendChild(inputLine);
 
-            // Кнопка отправки
             const sendBtn = document.createElement('button');
             sendBtn.textContent = '[ ОТПРАВИТЬ ]';
             sendBtn.style.cssText = `
@@ -727,7 +740,7 @@ Telegram-бот — магазин программ тренировок.
                 border: 2px solid #0f0;
                 padding: 5px 15px;
                 margin: 10px 0;
-                font-family: 'Courier New', monospace;
+                font-family: 'Roboto Mono', 'Courier New', monospace;
                 cursor: pointer;
                 font-weight: bold;
                 transition: all 0.2s;
@@ -743,14 +756,12 @@ Telegram-бот — магазин программ тренировок.
             sendBtn.onclick = () => handleAIQuery(input.value);
             terminal.appendChild(sendBtn);
 
-            // Enter для отправки
             input.addEventListener('keypress', (e) => {
                 if (e.key === 'Enter') {
                     handleAIQuery(input.value);
                 }
             });
 
-            // Кнопка назад
             const backBtn = document.createElement('div');
             backBtn.className = 'back-btn';
             backBtn.textContent = '[ESC - Вернуться в меню]';
@@ -860,7 +871,6 @@ Telegram-бот — магазин программ тренировок.
 
         window.onload = () => bootSequence();
 
-        // Навигация клавишами
         document.addEventListener('keydown', (e) => {
             if (bootComplete) {
                 if (e.key >= '1' && e.key <= '4') {
@@ -876,7 +886,6 @@ Telegram-бот — магазин программ тренировок.
             }
         });
 
-        // Отключаем зум при двойном тапе
         let lastTouchEnd = 0;
         document.addEventListener('touchend', function (event) {
             const now = Date.now();
