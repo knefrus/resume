@@ -39,9 +39,9 @@
             }
 
             .ascii-art {
-                font-size: 7px !important;
-                line-height: 1 !important;
-            }
+    font-size: 9px;
+    line-height: 1.1;
+}
 
             .menu-item {
                 font-size: 11px;
@@ -71,8 +71,9 @@
             }
 
             .ascii-art {
-                font-size: 6px !important;
-            }
+    font-size: 8px;
+    line-height: 1.1;
+}
 
             .menu-item {
                 font-size: 10px;
@@ -91,8 +92,10 @@
             }
 
             .ascii-art {
-                font-size: 7px !important;
-            }
+    font-size: 8px;
+    line-height: 1.1;
+}
+
         }
 
         .boot-line {
@@ -426,6 +429,21 @@
   line-height: 1.05;
 }
 
+/* ===== ASCII fix (mobile 1:1) ===== */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+.ascii-art,
+.me-popover pre {
+  white-space: pre;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Roboto Mono", "Courier New", monospace;
+  font-variant-ligatures: none;
+  font-kerning: none;
+  letter-spacing: 0;
+  tab-size: 4;
+  overflow-x: auto;
+  display: block;
+  max-width: 100%;
+}
 
     </style>
 </head>
