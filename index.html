@@ -283,10 +283,6 @@
         .copy { color:#ffff00; cursor:pointer; }
         .copy:hover { text-decoration:underline; }
 
-        .about-mid {
-            position: relative;
-            white-space: pre;
-        }
 
     .vibe-hover .vibe-hidden { display: inline; }
     .vibe-hover .vibe-hint { display: none; }
@@ -344,10 +340,143 @@
     background: #000;
 }
 
+
+.me-popover .me-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.me-popover .me-title{
+  color: #00ffff;
+  font-weight: 700;
+}
+
+.me-popover .me-close{
+  cursor: pointer;
+  color: #ff00ff;
+  user-select: none;
+}
+
+.me-popover pre{
+  margin-top: 8px;
+  color: #fff;
+  white-space: pre;
+  font-family: 'Roboto Mono', 'Courier New', monospace;
+  font-size: 9px;
+  line-height: 1.05;
+}
+/* ===== ME Easter Egg (invisible click on "ME" + popover) ===== */
+
+/* Контейнер для заголовка ABOUT ME, чтобы можно было поверх поставить кликабельную зону */
+.me-title-wrap{
+  position: relative;
+  display: inline-block;
+  white-space: pre;         /* сохраняем ASCII вид */
+}
+
+/* Невидимая зона клика поверх букв "ME" */
+.me-hit{
+  position: absolute;
+  cursor: pointer;
+  background: transparent;
+  pointer-events: auto;
+  /* важно для мобилы */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Popover (плавающее окно рядом с курсором/пальцем) */
+.me-popover{
+  position: fixed;
+  z-index: 100000;
+  max-width: min(92vw, 620px);
+  max-height: min(80vh, 600px);
+  overflow: auto;
+  background: rgba(0,0,0,0.92);
+  color: #0f0;
+  border: 2px solid #0f0;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 0 24px rgba(0,255,0,0.25);
+}
+
+.me-popover .me-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.me-popover .me-title{
+  color: #00ffff;
+  font-weight: 700;
+}
+
+.me-popover .me-close{
+  cursor: pointer;
+  color: #ff00ff;
+  user-select: none;
+}
+
+.me-popover pre{
+  margin-top: 8px;
+  color: #fff;
+  white-space: pre;
+  font-family: 'Roboto Mono', 'Courier New', monospace;
+  font-size: 9px;
+  line-height: 1.05;
+}
+
+
     </style>
 </head>
 <body>
     <div id="terminal"></div>
+
+
+    <!-- ===== ME ASCII storage (prevents JS backtick crash) ===== -->
+<script id="meAsciiStore" type="text/plain">
+ITS ME :)
+
+                                        _▄▄████▓▓▓▓▓█▓╖                         
+                                   _╓▓▓▓▓▓█████████▓███▓███▌▄╖_                 
+                                 ▄▓▓▓▓▓█████████████████████▓▓▓▓▄_              
+                              ,╫███▓█▓▓▓▓███████████████▓█████▓▓▓▓▌             
+                              ▓██▓▓▓▓▓▓▓▓▓▓█████████████████████▓▓▓▓▌_          
+ ___                        ▄▓███▓▓▓▓▓▓▓▓▓▓█████████████████████▓▓▓▓▓▓▓,        
+j██▌      ███             ╓▓▓███▓██▓▓▓▓▓▓▓███████████▓▓█████████▓▓▓▓▓▒▒▓▓,      
+j██▌      ███             ▓▓████████▓▓▓▓▓▓▓█▓███▓▓▓▓▓▓▓█████████▓▓▓▓▒▓▒▓▓▒∩     
+j████████████████████▌   ████████████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▓████▓▓▓▓▒▓▓▒▒▓▓▌     
+ ████████████████████▌  (███████████▓▓▓▓▓▓▓▓▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▓▓▓▒▒▓▒     
+                        █████████████████▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▓▓▒▓     
+                       ██████████████████▓▓▓▓██▓▓▓▓▓▓▓▓▒▓▓▒▒▒▒▓▒▒▒▒▓▓▒▒▓▓▓▌     
+ ___               __ "█████████████████████████▓▓▓▓▓▓▓▓▓▓▓▓▒▒▓▓▓▓▓▓▓▓▓▓▓▓∩     
+j██▌     ▐██p     ▐██▌º▌▀█████████████████████▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▓▓▒▓▒▓▓▓▓▓▒▒      
+j██▌     ▐██▌     ▐██▌  ▀███████████████████▓▓▓▓██▓▓▌▒▒▒▓▒M²▒▒▒▒▒▒╠▒▓▓▓▓▓∩      
+j████████████████████▌    ╟████████████████▓▒▒▒▀▒▒▀Ü`²║▒▒Ü` ²ÑÑ'``'▒Ñ▒▓▓▀       
+j████████████████████▌     `▐▒▓▒▓▓▓▓▓█▓▓▒▒▒ÑÑÑÑ║▒Ñ«««&lt;«∩` ..╓╔╢╣▒@α'╚╫▓▌        
+                           ╣▒▒▓▓▓▓▓▓▒▒▒▒▒╠▒ÑÑ@@ÑD@║ÑÑ╢▄▄▄▒╫▓▓▓▒▒▒▒Ñ∩ ╟▌.∞¼_     
+                           ▓▒▒▓▓▓███▓▓▓▓▓▓▒▒╠▒▒Ñ╠╠▒▒▒▒▒▒▓▓▓▒▒▒▒▄@╔Γ` ╟ .*▒▒     
+                           ª▓▒▒▒▓▓▓█████▓▓▓▓▒▒▒ÑÑÑ▒▒▒▒▒▓▒▓██▓▒▀▒▒Ñ²  ▐` '║∩     
+j████████████████████▌       ▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▒∩   ²╚╚╚▀▒╠Ñ▒▒Ñ«╚²``   (Ñ«'`      
+ ````````░▓██████████▀       ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒Ñ        ²╚Ñ╚╚╚╙²        '`²       
+ __▄▄███████▀▀▀              ║▒▒▒▒▒ÑÑÑÑÑÑ╠▒▒▒Ñ                        -²        
+j████████▄▄▄▄▄▄▄▄▄▄▄▄╕        ▒▒▒▒ÑÑ@@Ñ@║▒▒▒▒▒                      ² ²         
+ ████████████████████▌        ╟▒▒▒▒▒ÑÑÑÑ╠▒▒▒▒▒q .&lt;&lt; ²~        ~ .`  Ñ`          
+                               ▒▒▒▒▒ÑÑÑ╠▒▒▒▒▒Ñ&lt;` `   ~           ~              
+                               ║▒▒▒▒▒╠╠╟▒▒▒▒▒▄@╔╓╔▄▄╔`                          
+ _                  _,          ▒▒▒▒▒▒▒▒▒▒▒▒▓▓▒▒▒Ñ╚Ñ              ∩             
+j███▄,         ,▄████▌          ║▒▒▒▒▒▒▒▒▒▒▒▒▒Ü&lt;Ñ          `   ~¿               
+  ▀▀█████▄▄▄██████▀▀             ╟▒▒▒▒▒▒▒▒▒▒▒@╓_╓«╔╔__._.      &lt;&lt;               
+       ▀██████░                   ╚▒▒▒▒▒▒▓▓▓▓▀▀▀▒╚╨Ñ╚╚╚∩╚*   ~&lt;«                
+j████████████████████▌             ╙▒▒▒▒▒▒▒▒▒▒▒╠╠ÑÑ╠╠««,&lt;╔« &lt;««                 
+ ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀`            ,╣▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒Ñ╚²²*`'~&lt;²`                 
+                              ▄█▓▓▒▒▒▒▒▒▒▒▒▒ÑÑÑΓ²&lt;~`       «`                   
+                         _▄████▓▒▒▒▒▒▒▒▒▒▒▒▒▒╠@«D««&lt;,.. .╓╙  &lt;¼╖_               
+                    _æ▓████████▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒╠╠╠║Ñ@Ñ@╔@Ñ    `  ▀█▄_            
+                 _╔╣▓██████████▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒Ñ`     «    ▓█▓▓██▄        
+              _╔╢▓▓█████████████▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒Ñ²      &lt;`   ~▓█▓▓▓▓▓███▄__  
+            ╣▓▓█████████████████▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒ÑÜ`       ~`   ~▐▓██▓█▓▓██████▓▓
+</script>
 
     <script>
         const terminal = document.getElementById('terminal');
@@ -918,30 +1047,102 @@ Data Analyst / Data Scientist</span>. Работаю с реальными да�
 
         function showContent(contentId) {
     terminal.innerHTML = '';
-    
+
     if (contentId === 'ai') {
         showAIChat();
         return;
     }
-    
+
     addLine('[recruiter@archlinux ~]$ cat ' + contentId + '.txt', 'command');
     addLine('');
 
     const content = document.createElement('div');
     content.className = 'content';
     content.style.display = 'block';
-    
-    // Получаем данные с учётом размера экрана
+
     const data = getContentData();
-    
-    // Для "О себе" и "Навыков" рендерим HTML
-    if (contentId === 'about' || contentId === 'skills') {
-        content.innerHTML = data[contentId];
-    } else {
-        content.innerHTML = data[contentId];
-    }
-    
+    content.innerHTML = data[contentId];
+
     terminal.appendChild(content);
+
+    // ===== ME overlay on ABOUT ME (no visible link, no ASCII break) =====
+    if (contentId === 'about') {
+        // 1) найдём строку "О СЕБЕ / ABOUT ME" и обернём в span.me-title-wrap
+        // делаем аккуратно: заменяем только ПЕРВОЕ вхождение, чтобы не ломать остальной текст
+        const html = content.innerHTML;
+
+        // mobile вариант: строка без рамки
+        const mobileTitle = 'О СЕБЕ / ABOUT ME';
+        // desktop вариант: внутри рамки
+        const desktopTitle = '║                      О СЕБЕ / ABOUT ME                     ║';
+
+        let newHtml = html;
+
+        if (newHtml.includes(mobileTitle)) {
+            newHtml = newHtml.replace(
+                mobileTitle,
+                `<span class="me-title-wrap" id="meTitleWrap">${mobileTitle}</span>`
+            );
+        } else if (newHtml.includes(desktopTitle)) {
+            newHtml = newHtml.replace(
+                desktopTitle,
+                `<span class="me-title-wrap" id="meTitleWrap">${desktopTitle}</span>`
+            );
+        }
+
+        content.innerHTML = newHtml;
+
+        // 2) ставим невидимую зону клика поверх букв "ME"
+        // позиция считается от конца строки (по моноширинному шрифту это стабильно)
+        const wrap = content.querySelector('#meTitleWrap');
+        if (wrap) {
+            const hit = document.createElement('div');
+            hit.className = 'me-hit';
+
+            // вычисляем размеры 1 символа
+            const test = document.createElement('span');
+            test.textContent = 'M';
+            test.style.visibility = 'hidden';
+            test.style.position = 'absolute';
+            wrap.appendChild(test);
+
+            const charW = test.getBoundingClientRect().width;
+            const charH = test.getBoundingClientRect().height;
+            test.remove();
+
+            // "ME" — 2 символа. Ставим хитбокс на последние 2 символа строки.
+            // Но в desktop рамке "ME" не в конце строки, поэтому делаем точнее:
+            // найдём индекс "ME" в тексте и посчитаем offset.
+            const text = wrap.textContent;
+            const idx = text.indexOf('ME');
+            if (idx !== -1) {
+                hit.style.top = '0px';
+                hit.style.height = charH + 'px';
+                hit.style.width = (charW * 2) + 'px';
+
+                // смещение слева = idx * charW
+                hit.style.left = (idx * charW) + 'px';
+            } else {
+                // фолбэк: просто справа
+                hit.style.top = '0px';
+                hit.style.right = '0px';
+                hit.style.height = charH + 'px';
+                hit.style.width = (charW * 2) + 'px';
+            }
+
+            // клик/тап → popover рядом с курсором/пальцем
+            hit.addEventListener('click', (e) => {
+                openMePopover(e.clientX || (window.innerWidth / 2), e.clientY || (window.innerHeight / 2));
+            });
+
+            hit.addEventListener('touchstart', (e) => {
+                const t = e.touches && e.touches[0];
+                if (t) openMePopover(t.clientX, t.clientY);
+            }, { passive: true });
+
+            wrap.appendChild(hit);
+        }
+    }
 
     addLine('');
     const backBtn = document.createElement('div');
@@ -953,6 +1154,7 @@ Data Analyst / Data Scientist</span>. Работаю с реальными да�
     };
     terminal.appendChild(backBtn);
 }
+
 
         function toggleCollapsible(element) {
             element.classList.toggle('active');
@@ -1231,13 +1433,89 @@ document.addEventListener('click', (e) => {
     if (e.target.id === 'diagramModal') closeDiagram();
 });
 
-// close on ESC (only if modal is open)
+// ===== ME Easter Egg (popover) =====
+let mePopoverEl = null;
+
+function getMeAscii() {
+  const el = document.getElementById('meAsciiStore');
+  if (!el) return 'ITS ME :)';
+  // сохраняем все пробелы и строки; убираем только один финальный перенос
+  return el.textContent.replace(/\r\n/g, '\n').replace(/\n$/, '');
+}
+
+function openMePopover(clientX, clientY) {
+  closeMePopover();
+
+  const pop = document.createElement('div');
+  pop.className = 'me-popover';
+
+  const header = document.createElement('div');
+  header.className = 'me-header';
+
+  const title = document.createElement('div');
+  title.className = 'me-title';
+  title.textContent = '[viewer@archlinux]$ its_me';
+
+  const closeBtn = document.createElement('div');
+  closeBtn.className = 'me-close';
+  closeBtn.textContent = '[X] close';
+  closeBtn.addEventListener('click', closeMePopover);
+
+  header.appendChild(title);
+  header.appendChild(closeBtn);
+
+  const pre = document.createElement('pre');
+  pre.textContent = getMeAscii(); // ВАЖНО: textContent, не innerHTML
+
+  pop.appendChild(header);
+  pop.appendChild(pre);
+
+  document.body.appendChild(pop);
+  mePopoverEl = pop;
+
+  // позиционирование
+  const pad = 12;
+  const rect = pop.getBoundingClientRect();
+
+  let x = (clientX ?? window.innerWidth / 2) + pad;
+  let y = (clientY ?? window.innerHeight / 2) + pad;
+
+  if (x + rect.width > window.innerWidth - pad) x = window.innerWidth - rect.width - pad;
+  if (y + rect.height > window.innerHeight - pad) y = window.innerHeight - rect.height - pad;
+  if (x < pad) x = pad;
+  if (y < pad) y = pad;
+
+  pop.style.left = x + 'px';
+  pop.style.top  = y + 'px';
+
+  // закрытие по клику вне окна
+  setTimeout(() => {
+    document.addEventListener('mousedown', handleOutsideMeClick);
+    document.addEventListener('touchstart', handleOutsideMeClick, { passive: true });
+  }, 0);
+}
+
+function handleOutsideMeClick(e) {
+  if (!mePopoverEl) return;
+  if (mePopoverEl.contains(e.target)) return;
+  closeMePopover();
+}
+
+function closeMePopover() {
+  if (!mePopoverEl) return;
+  document.removeEventListener('mousedown', handleOutsideMeClick);
+  document.removeEventListener('touchstart', handleOutsideMeClick, { passive: true });
+  mePopoverEl.remove();
+  mePopoverEl = null;
+}
+
+// ESC закрывает popover (но НЕ ломает общий ESC-меню)
 document.addEventListener('keydown', (e) => {
-    const modal = document.getElementById('diagramModal');
-    if (e.key === 'Escape' && modal && modal.style.display === 'block') {
-        closeDiagram();
-    }
+  if (e.key === 'Escape' && mePopoverEl) {
+    closeMePopover();
+  }
 });
+
 
         window.onload = () => bootSequence();
 
@@ -1250,14 +1528,24 @@ document.addEventListener('keydown', (e) => {
                     }
                 }
                 if (e.key === 'Escape') {
+    // 1) закрыть пасхалку если открыта
+    if (mePopoverEl) {
+    closeMePopover();
+    return;
+}
+
+    // 2) закрыть диаграммы если открыты
     const modal = document.getElementById('diagramModal');
     if (modal && modal.style.display === 'block') {
         closeDiagram();
         return;
     }
+
+    // 3) иначе — в меню
     terminal.innerHTML = '';
     showMainMenu();
 }
+
 
             }
         });
@@ -1281,6 +1569,7 @@ document.addEventListener('keydown', (e) => {
         <object id="diagramObj" type="image/svg+xml" data=""></object>
     </div>
 </div>
+
 
 </body>
 </html>
