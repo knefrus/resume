@@ -298,6 +298,51 @@
         .vibe-hover:hover .vibe-hint { display: none; }
     }
 
+    #terminal { position: relative; z-index: 1; }
+    .modal { z-index: 99999; }
+
+    /* ===== Diagram viewer (modal) ===== */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 9999;
+    padding: 16px;
+}
+
+.modal-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    border: 2px solid #0f0;
+    background: #000;
+    padding: 10px;
+    max-height: 90vh;
+    overflow: auto;           /* ключ: появится скролл */
+}
+
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #0f0;
+    margin-bottom: 8px;
+}
+
+.modal-close {
+    cursor: pointer;
+    color: #ff00ff;
+    user-select: none;
+}
+
+.modal object {
+    width: 100%;
+    height: auto;             /* не тянуть по высоте */
+    min-height: 60vh;         /* чтобы не было слишком мелко */
+    display: block;
+    background: #000;
+}
 
     </style>
 </head>
@@ -400,15 +445,64 @@ Data Analyst / Data Scientist</span>. Работаю с реальными да�
 – участие в научном хакатоне (Kaggle-формат, один из лучших результатов с курса)
 </div>
 
-<div class="collapsible" onclick="toggleCollapsible(this)">Pet-проект: Telegram-бот тренировок</div>
+<div class="collapsible" onclick="toggleCollapsible(this)">Pet-проект: Telegram Fitness Bot (Python / AI)</div>
 <div class="collapsible-content">
-Telegram-бот — магазин программ тренировок.
+Проект по разработке Telegram-бота для персонализации тренировочных программ
+и анализа пользовательской тренировочной активности.
+
+<span class="accent">Статус проекта:</span>
+Проект находится в разработке, ведётся расширение функциональности и
+подготовка к деплою.
+
+<span class="accent">Использовано:</span>
+– Python 3.13  
+– aiogram 3.x  
+– SQLAlchemy (async)  
+– FSM (Finite State Machine)  
+– Repository pattern  
+– Gemini / Groq API  
+– Matplotlib  
+– APScheduler  
+– YAML  
+
+<span class="accent">Реализация:</span>
+– асинхронная архитектура Telegram-бота (routers, filters, callback endpoints)  
+– слой сервисов и репозиториев, работа с базой данных  
+– FSM для управления пользовательскими сценариями  
+– feature flags и конфигурация через environment variables  
+– логирование и обработка ошибок  
+– фоновые задачи и cron-логика  
 
 <span class="accent">Функционал:</span>
-– калькулятор тренировок  
-– сбор и анализ пользовательской статистики  
-– ИИ-тренер  
-– персонализация тренировочных программ
+– алгоритм безопасной прогрессии тренировочных программ
+  (RPE-модель, принципы спортивной науки)  
+– AI-анализ текстовых отзывов пользователей с формированием
+  метрик и рекомендаций  
+– live-тренировки с логированием подходов, повторений и весов  
+– аналитика тренировочного прогресса
+  (динамика показателей, личные рекорды, детекция перетренированности)  
+– монетизация: виртуальная валюта, подписки,
+  интеграция Telegram Payments  
+
+<span class="accent">Результат:</span>
+– ~7 500+ строк кода  
+– 9+ модулей  
+– масштабируемая архитектура  
+
+<span class="accent">Диаграммы:</span>
+<div class="collapsible" onclick="toggleCollapsible(this)">Sequence diagrams (PlantUML)</div>
+<div class="collapsible-content">
+– <span class="copy" onclick="openDiagram('workout_lifecycle.svg')">open workout_lifecycle.svg</span>  
+– <span class="copy" onclick="openDiagram('monetization_engagement.svg')">open monetization_engagement.svg</span>
+</div>
+
+<span class="accent">Потенциал развития:</span>
+– Docker-контейнеризация  
+– деплой на VPS  
+– Redis для кэширования состояния и FSM  
+– создание административной панели  
+– автоматическое формирование YAML-тренировок
+  из текстовых описаний с использованием LLM
 </div>
 
 
@@ -470,24 +564,66 @@ Data Analyst / Data Scientist</span>. Работаю с реальными да�
 – участие в научном хакатоне (Kaggle-формат, один из лучших результатов с курса)
 </div>
 
-<div class="collapsible" onclick="toggleCollapsible(this)">Telegram Fitness Bot (Python / AI)</div>
+<div class="collapsible" onclick="toggleCollapsible(this)">Pet-проект: Telegram Fitness Bot (Python / AI)</div>
 <div class="collapsible-content">
-AI-powered фитнес-бот с адаптивной прогрессией нагрузки и персональными рекомендациями.  
-Полный цикл разработки: от архитектуры до production-ready решения.
+Проект по разработке Telegram-бота для персонализации тренировочных программ
+и анализа пользовательской тренировочной активности.
 
-<span class="accent">Использовано:</span>  
-Python 3.13 • aiogram 3.x • SQLAlchemy (async) • Gemini/Groq API • Matplotlib • FSM • Repository pattern
+<span class="accent">Статус проекта:</span>
+Проект находится в разработке, ведётся расширение функциональности и
+подготовка к деплою.
 
-<span class="accent">Ключевые фичи:</span>  
-– алгоритм безопасной прогрессии тренировок на основе RPE и спортивной науки  
-– AI-анализ текстовых отзывов → структурированные данные + рекомендации 
-– live-тренировки с логированием подходов
-– аналитика: построение графиков прогресса, личные рекорды, детекция перетренированности  
-– монетизация: виртуальная валюта, подписки, возможна интеграция платежки (YooKassa)
+<span class="accent">Использовано:</span>
+– Python 3.13  
+– aiogram 3.x  
+– SQLAlchemy (async)  
+– FSM (Finite State Machine)  
+– Repository pattern  
+– Gemini / Groq API  
+– Matplotlib  
+– APScheduler  
+– YAML  
 
-<span class="accent">Результат:</span>  
-3,000+ строк, 9 модулей, production-ready архитектура, готов к масштабированию
+<span class="accent">Реализация:</span>
+– асинхронная архитектура Telegram-бота (routers, filters, callback endpoints)  
+– слой сервисов и репозиториев, работа с базой данных  
+– FSM для управления пользовательскими сценариями  
+– feature flags и конфигурация через environment variables  
+– логирование и обработка ошибок  
+– фоновые задачи и cron-логика  
+
+<span class="accent">Функционал:</span>
+– алгоритм безопасной прогрессии тренировочных программ
+  (RPE-модель, принципы спортивной науки)  
+– AI-анализ текстовых отзывов пользователей с формированием
+  метрик и рекомендаций  
+– live-тренировки с логированием подходов, повторений и весов  
+– аналитика тренировочного прогресса
+  (динамика показателей, личные рекорды, детекция перетренированности)  
+– монетизация: виртуальная валюта, подписки,
+  интеграция Telegram Payments  
+
+<span class="accent">Результат:</span>
+– ~7 500+ строк кода  
+– 9+ модулей  
+– масштабируемая архитектура  
+
+<span class="accent">Диаграммы:</span>
+<div class="collapsible" onclick="toggleCollapsible(this)">Sequence diagrams (PlantUML)</div>
+<div class="collapsible-content">
+– <span class="copy" onclick="openDiagram('workout_lifecycle.svg')">open workout_lifecycle.svg</span>  
+– <span class="copy" onclick="openDiagram('monetization_engagement.svg')">open monetization_engagement.svg</span>
 </div>
+
+<span class="accent">Потенциал развития:</span>
+– Docker-контейнеризация  
+– деплой на VPS  
+– Redis для кэширования состояния и FSM  
+– создание административной панели  
+– автоматическое формирование YAML-тренировок
+  из текстовых описаний с использованием LLM
+</div>
+
 
 <span class="highlight">Дополнительно:</span>
 Программирую, собираю и летаю на БПЛА. <span class="accent">Двукратный чемпион РФ</span> 
@@ -1072,6 +1208,36 @@ Python 3.13 • aiogram 3.x • SQLAlchemy (async) • Gemini/Groq API • Matpl
         navigator.clipboard.writeText(text);
         }
 
+        // ===== Diagram viewer =====
+function openDiagram(src) {
+    const modal = document.getElementById('diagramModal');
+    const obj = document.getElementById('diagramObj');
+    obj.data = src + '?v=' + Date.now(); // анти-кэш
+    modal.style.display = 'block';
+}
+
+function closeDiagram() {
+    const modal = document.getElementById('diagramModal');
+    const obj = document.getElementById('diagramObj');
+    modal.style.display = 'none';
+    obj.data = '';
+}
+
+
+// close on background click
+document.addEventListener('click', (e) => {
+    const modal = document.getElementById('diagramModal');
+    if (!modal || modal.style.display !== 'block') return;
+    if (e.target.id === 'diagramModal') closeDiagram();
+});
+
+// close on ESC (only if modal is open)
+document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('diagramModal');
+    if (e.key === 'Escape' && modal && modal.style.display === 'block') {
+        closeDiagram();
+    }
+});
 
         window.onload = () => bootSequence();
 
@@ -1084,9 +1250,15 @@ Python 3.13 • aiogram 3.x • SQLAlchemy (async) • Gemini/Groq API • Matpl
                     }
                 }
                 if (e.key === 'Escape') {
-                    terminal.innerHTML = '';
-                    showMainMenu();
-                }
+    const modal = document.getElementById('diagramModal');
+    if (modal && modal.style.display === 'block') {
+        closeDiagram();
+        return;
+    }
+    terminal.innerHTML = '';
+    showMainMenu();
+}
+
             }
         });
 
@@ -1099,5 +1271,16 @@ Python 3.13 • aiogram 3.x • SQLAlchemy (async) • Gemini/Groq API • Matpl
             lastTouchEnd = now;
         }, false);
     </script>
+    <!-- ===== Diagram viewer modal ===== -->
+<div id="diagramModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="prompt">[viewer@archlinux]$ display diagram</div>
+            <div class="modal-close" onclick="closeDiagram()">[X] close</div>
+        </div>
+        <object id="diagramObj" type="image/svg+xml" data=""></object>
+    </div>
+</div>
+
 </body>
 </html>
